@@ -4,12 +4,12 @@ using System.Text;
 
 namespace GildedRose.Original
 {
-    public class DatePeremptionControlUtils
+    public class DatePeremptionControlUtils : OperatorsDelegateUtils
     {
-        public static int ControlDatePeremption(Item item)
+        public int ControlDatePeremption(Item item)
         {
             // uncrement quality one more time (compared to the coefficient day)
-            return (item.SellIn < 0) ? OperatorsDelegateUtils.doUncrementQuality(item, HttpMethods.CoefficientDay) : item.Quality;
+            return (item.SellIn < 0) ? DoUncrementQuality(item, HttpMethods.CoefficientDay) : item.Quality;
         }
 
     }

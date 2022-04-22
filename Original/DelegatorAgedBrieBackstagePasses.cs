@@ -4,27 +4,27 @@ using System.Text;
 
 namespace GildedRose.Original
 {
-    public class DelegatorAgedBrieBackstagePasses
+    public class DelegatorAgedBrieBackstagePasses : OperatorsDelegateUtils
     {
-        public static int operatorBackstagesPassesAndAgedBrie(Item item)
+        public int OperatorBackstagesPassesAndAgedBrie(Item item)
         {
             // increment quality for product BackstagePasses & AgedBrie
             if (item.Name == HttpMethods.BackstagePasses || item.Name == HttpMethods.AgedBrie)
             {
-                item.Quality = OperatorsDelegateUtils.doIncrementQualitytItem(item);
+                item.Quality = DoIncrementQualitytItem(item);
 
                 // after 10 remaining days  
-                item.Quality = (item.SellIn <= 10) ? OperatorsDelegateUtils.doIncrementQualitytItem(item) : item.Quality;
+                item.Quality = (item.SellIn <= 10) ? DoIncrementQualitytItem(item) : item.Quality;
 
                 // after 5 remaining days   
-                item.Quality = (item.SellIn <= 5) ? OperatorsDelegateUtils.doIncrementQualitytItem(item) : item.Quality;
+                item.Quality = (item.SellIn <= 5) ? DoIncrementQualitytItem(item) : item.Quality;
 
                 // after the concert 
-                return (item.SellIn < 0) ? OperatorsDelegateUtils.doResetQuality(item) : item.Quality;
+                return (item.SellIn < 0) ? DoResetQuality(item) : item.Quality;
             }
             
             // uncrement quality for all products
-            return OperatorsDelegateUtils.uncrementQualityItem(item, HttpMethods.CoefficientDay);
+            return UncrementQualityItem(item, HttpMethods.CoefficientDay);
         }
 
     }

@@ -4,6 +4,7 @@
     {
         // todo : getting values from properties
         public static readonly int Max = 50;
+        public static readonly int MaxSulfuras = 80;        
         public static readonly int CoefficientDay = 1;
         public static readonly string AgedBrie = "Aged Brie";
         public static readonly string BackstagePasses = "Backstage passes";
